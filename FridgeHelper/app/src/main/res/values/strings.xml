@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">FridgeHelper</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="logIn">LogIn</string>
+    <string name="logIn_failure">LogIn Failure</string>
+    <string name="register">Register</string>
+    <string name="password_does_not_match">The passwords does not match</string>
+    <string name="failedRegistration">Registration Failed</string>
 </resources>

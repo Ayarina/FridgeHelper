@@ -1,7 +1,8 @@
-package org.wit.fridgehelper
+package org.wit.fridgehelper.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import org.wit.fridgehelper.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
