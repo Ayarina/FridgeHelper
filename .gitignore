@@ -83,3 +83,15 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 # lint/reports/
+
+/.idea
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+
+#Google Maps API
+google_maps_api.xml
+app/src/release/res/values/google_maps_api.xml
+app/src/debug/res/values/google_maps_api.xml
