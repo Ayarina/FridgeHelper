@@ -8,10 +8,12 @@ import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.wit.fridgehelper.R
 import org.wit.fridgehelper.adapters.ProductAdapter
+import org.wit.fridgehelper.adapters.ProductListener
 import org.wit.fridgehelper.databinding.ActivityProductListBinding
 import org.wit.fridgehelper.main.MainApp
+import org.wit.fridgehelper.models.ProductModel
 
-class ProductListActivity : AppCompatActivity() {
+class ProductListActivity : AppCompatActivity(), ProductListener {
 
     private lateinit var binding: ActivityProductListBinding
     private lateinit var app: MainApp
@@ -28,7 +30,7 @@ class ProductListActivity : AppCompatActivity() {
         //RecyclerView
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = ProductAdapter(app.products)
+        binding.recyclerView.adapter = ProductAdapter(app.products, this)
 
     }
 
@@ -45,5 +47,10 @@ class ProductListActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onProductClick(product: ProductModel) {
+        val launcherIntent = Intent(this, ProductActivity::class.java)
+        startActivity(launcherIntent)
     }
 }

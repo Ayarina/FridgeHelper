@@ -6,7 +6,12 @@ import androidx.recyclerview.widget.RecyclerView
 import org.wit.fridgehelper.databinding.CardProductBinding
 import org.wit.fridgehelper.models.ProductModel
 
-class ProductAdapter constructor(private var products: List<ProductModel>) :
+interface ProductListener {
+    fun onProductClick(product: ProductModel)
+}
+
+class ProductAdapter constructor(private var products: List<ProductModel>,
+                                 private val listener: ProductListener) :
     RecyclerView.Adapter<ProductAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
@@ -18,7 +23,7 @@ class ProductAdapter constructor(private var products: List<ProductModel>) :
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
         val product = products[holder.adapterPosition]
-        holder.bind(product)
+        holder.bind(product, listener)
     }
 
     override fun getItemCount(): Int = products.size
@@ -26,10 +31,11 @@ class ProductAdapter constructor(private var products: List<ProductModel>) :
     class MainHolder(private val binding : CardProductBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(product: ProductModel) {
+        fun bind(product: ProductModel, listener: ProductListener) {
             binding.productName.text = product.name
             binding.productPrice.text = product.price
             binding.productQuantityPicker.number = product.quantity.toString()
+            binding.root.setOnClickListener { listener.onProductClick(product) }
         }
     }
 }
