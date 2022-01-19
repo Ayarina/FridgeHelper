@@ -3,13 +3,10 @@ package org.wit.fridgehelper.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import timber.log.Timber.i
 import com.google.android.material.snackbar.Snackbar
 import org.wit.fridgehelper.R
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import org.wit.fridgehelper.databinding.ActivityLogInBinding
@@ -42,7 +39,7 @@ class LogInActivity : AppCompatActivity() {
                         app.user = User("SampleUsername", "email")
 
                         //TODO Hay que pasar información o obtener?
-                        val launcherIntent = Intent(this, MainActivity::class.java)
+                        val launcherIntent = Intent(this, ProductListActivity::class.java)
                         Snackbar.make(it,getString(R.string.welcome), Snackbar.LENGTH_LONG).show()
                         startActivity(launcherIntent)
                     } else {

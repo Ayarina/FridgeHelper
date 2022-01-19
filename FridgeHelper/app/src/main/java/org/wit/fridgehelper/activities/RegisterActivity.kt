@@ -7,7 +7,6 @@ import timber.log.Timber.i
 import com.google.android.material.snackbar.Snackbar
 import org.wit.fridgehelper.R
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import org.wit.fridgehelper.databinding.ActivityRegisterBinding
@@ -42,7 +41,7 @@ class RegisterActivity : AppCompatActivity() {
                             app.user = User("SampleUsername", "email")
 
                             //TODO Hay que pasar información o obtener?
-                            val launcherIntent = Intent(this, MainActivity::class.java)
+                            val launcherIntent = Intent(this, ProductListActivity::class.java)
                             Snackbar.make(it,getString(R.string.welcome), Snackbar.LENGTH_LONG).show()
                             startActivity(launcherIntent)
                         } else {
