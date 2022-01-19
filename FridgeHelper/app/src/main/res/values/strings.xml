@@ -8,4 +8,7 @@
     <string name="passwords_do_not_match">The passwords do not match</string>
     <string name="failedRegistration">Registration Failed</string>
     <string name="welcome">Welcome</string>
+    <string name="hint_productName">Name</string>
+    <string name="hint_productPrice">ej: 3€/u, 10€/kg…</string>
+    <string name="button_addProduct">Add Product</string>
 </resources>
