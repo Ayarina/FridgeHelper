@@ -1,6 +1,7 @@
 package org.wit.fridgehelper.activities
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -8,6 +9,7 @@ import android.view.MenuItem
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.material.snackbar.Snackbar
+import com.squareup.picasso.Picasso
 import org.wit.fridgehelper.R
 import org.wit.fridgehelper.databinding.ActivityProductBinding
 import org.wit.fridgehelper.helpers.showImagePicker
@@ -43,7 +45,12 @@ class ProductActivity : AppCompatActivity() {
             binding.productPriceAdd.setText(product.price)
             binding.productQuantityAdd.setText(product.quantity.toString())
             binding.btnAdd.text = getString(R.string.button_editProduct)
-            binding.addImage.text = getString(R.string.button_updateImage)
+            if(product.image != Uri.EMPTY) {
+                binding.addImage.text = getString(R.string.button_updateImage)
+                Picasso.get()
+                    .load(product.image)
+                    .into(binding.productImageAdd)
+            }
             index = app.products.indexOf(product)
         }
 
@@ -100,6 +107,11 @@ class ProductActivity : AppCompatActivity() {
                     RESULT_OK -> {
                         if (result.data != null) {
                             i("Got Result ${result.data!!.data}")
+                            product.image = result.data!!.data!!
+                            Picasso.get()
+                                .load(product.image)
+                                .into(binding.productImageAdd)
+                            binding.addImage.text = getString(R.string.button_updateImage)
                         }
                     }
                     RESULT_CANCELED -> { } else -> { }

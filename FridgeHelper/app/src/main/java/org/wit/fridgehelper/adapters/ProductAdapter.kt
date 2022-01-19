@@ -3,6 +3,7 @@ package org.wit.fridgehelper.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import org.wit.fridgehelper.databinding.CardProductBinding
 import org.wit.fridgehelper.models.ProductModel
 
@@ -35,6 +36,7 @@ class ProductAdapter constructor(private var products: List<ProductModel>,
             binding.productName.text = product.name
             binding.productPrice.text = product.price
             binding.productQuantityPicker.number = product.quantity.toString()
+            Picasso.get().load(product.image).resize(200,200).into(binding.productImage)
             binding.root.setOnClickListener { listener.onProductClick(product) }
         }
     }
