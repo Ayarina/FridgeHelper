@@ -41,6 +41,11 @@
                 android:orientation="vertical"
                 android:layout_margin="10dp">
 
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    />
                 <EditText
                     android:id="@+id/productNameAdd"
                     android:layout_width="match_parent"
@@ -83,6 +88,16 @@
                         />
                 </RelativeLayout>
 
+                <Button
+                    android:id="@+id/addImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:background="@color/colorAccent"
+                    android:stateListAnimator="@null"
+                    android:text="@string/button_addImage"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/btnAdd"
@@ -94,6 +109,8 @@
                     android:text="@string/button_addProduct"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp" />
+
+
 
             </LinearLayout>
         </ScrollView>

@@ -26,5 +26,7 @@
     <!-- Button's texts-->
     <string name="button_addProduct">Add Product</string>
     <string name="button_editProduct">Edit Product</string>
+    <string name="button_addImage">Add Image </string>
+
 
 </resources>
