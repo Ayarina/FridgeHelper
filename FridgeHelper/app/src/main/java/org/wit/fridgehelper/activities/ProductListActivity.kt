@@ -47,7 +47,7 @@ class ProductListActivity : AppCompatActivity(), ProductListener {
         when (item.itemId) {
             R.id.item_add -> {
                 val launcherIntent = Intent(this, ProductActivity::class.java)
-                startActivity(launcherIntent)
+                refreshIntentLauncher.launch(launcherIntent)
             }
         }
         return super.onOptionsItemSelected(item)
