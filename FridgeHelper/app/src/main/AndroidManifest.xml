@@ -3,6 +3,8 @@
     package="org.wit.fridgehelper">
 
     <application
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:replace="android:theme"
         android:name=".main.MainApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"

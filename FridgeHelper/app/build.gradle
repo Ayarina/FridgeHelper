@@ -54,4 +54,6 @@ dependencies {
     //FireBase
     implementation platform('com.google.firebase:firebase-bom:29.0.3')
     implementation 'com.google.firebase:firebase-auth-ktx'
+
+    implementation 'com.cepheuen.elegant-number-button:lib:1.0.2'
 }
