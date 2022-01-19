@@ -13,4 +13,5 @@
     <string name="button_addProduct">Add Product</string>
     <string name="menu_addProduct">Add</string>
     <string name="enter_name">Please enter a name</string>
+    <string name="hint_quantity">Quantity</string>
 </resources>

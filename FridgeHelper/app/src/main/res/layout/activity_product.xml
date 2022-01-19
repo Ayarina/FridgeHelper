@@ -53,17 +53,36 @@
                     android:textColor="@color/colorPrimaryDark"
                     />
 
-                <EditText
-                    android:id="@+id/productPriceAdd"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/basic_margin"
-                    android:autofillHints="hint"
-                    android:hint="@string/hint_productPrice"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:textColor="@color/colorPrimaryDark"
-                    />
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/productPriceAdd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/basic_margin"
+                        android:autofillHints="hint"
+                        android:hint="@string/hint_productPrice"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:layout_alignParentStart="true"
+                        />
+                    <EditText
+                        android:id="@+id/productQuantityAdd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/basic_margin"
+                        android:autofillHints="hint"
+                        android:hint="@string/hint_quantity"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:layout_alignParentEnd="true"
+                        />
+                </RelativeLayout>
+
 
                 <Button
                     android:id="@+id/btnAdd"

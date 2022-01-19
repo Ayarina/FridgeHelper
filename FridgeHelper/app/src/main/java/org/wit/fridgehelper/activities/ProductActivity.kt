@@ -24,10 +24,11 @@ class ProductActivity : AppCompatActivity() {
 
         app = application as MainApp
 
+        binding.productQuantityAdd.setText("0")
         binding.btnAdd.setOnClickListener() {
             product.name = binding.productNameAdd.text.toString()
             product.price = binding.productPriceAdd.text.toString()
-
+            product.quantity = binding.productQuantityAdd.text.toString().toInt()
             if(product.name.isNotEmpty()) {
                 app.products.add(product.copy())
                 i("Added product: $product")
