@@ -28,6 +28,7 @@ class LogInActivity : AppCompatActivity() {
         binding = ActivityLogInBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        auth = Firebase.auth
         app = application as MainApp
 
         binding.logInLogInbutton.setOnClickListener {
@@ -39,7 +40,11 @@ class LogInActivity : AppCompatActivity() {
                         i("signInWithEmail:success")
                         val user = auth.currentUser
                         app.user = User("SampleUsername", "email")
-                        //TODO Intent
+
+                        //TODO Hay que pasar información o obtener?
+                        val launcherIntent = Intent(this, MainActivity::class.java)
+                        Snackbar.make(it,getString(R.string.welcome), Snackbar.LENGTH_LONG).show()
+                        startActivity(launcherIntent)
                     } else {
                         i("signInWithEmail:failure")
                         Snackbar.make(it, getString(R.string.logIn_failure), Snackbar.LENGTH_LONG)

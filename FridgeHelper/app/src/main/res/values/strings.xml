@@ -5,6 +5,7 @@
     <string name="logIn">LogIn</string>
     <string name="logIn_failure">LogIn Failure</string>
     <string name="register">Register</string>
-    <string name="password_does_not_match">The passwords does not match</string>
+    <string name="passwords_do_not_match">The passwords do not match</string>
     <string name="failedRegistration">Registration Failed</string>
+    <string name="welcome">Welcome</string>
 </resources>

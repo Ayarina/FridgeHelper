@@ -1,5 +1,6 @@
 package org.wit.fridgehelper.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import timber.log.Timber.i
@@ -24,6 +25,7 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        auth = Firebase.auth
         app = application as MainApp
 
         binding.registerRegisterButton.setOnClickListener {
@@ -38,7 +40,11 @@ class RegisterActivity : AppCompatActivity() {
                             i("createUserWithEmail:success")
                             val user = auth.currentUser
                             app.user = User("SampleUsername", "email")
-                            //TODO intent a MainActivity, pasando parámetros si eso
+
+                            //TODO Hay que pasar información o obtener?
+                            val launcherIntent = Intent(this, MainActivity::class.java)
+                            Snackbar.make(it,getString(R.string.welcome), Snackbar.LENGTH_LONG).show()
+                            startActivity(launcherIntent)
                         } else {
                             i("createUserWithEmail:failure")
                             Snackbar.make(it,getString(R.string.failedRegistration), Snackbar.LENGTH_LONG)
@@ -46,7 +52,7 @@ class RegisterActivity : AppCompatActivity() {
                         }
                     }
             else
-                Snackbar.make(it,getString(R.string.password_does_not_match), Snackbar.LENGTH_LONG)
+                Snackbar.make(it,getString(R.string.passwords_do_not_match), Snackbar.LENGTH_LONG)
                     .show()
         }
 
