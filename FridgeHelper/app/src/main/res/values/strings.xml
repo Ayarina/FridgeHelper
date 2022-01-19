@@ -11,4 +11,6 @@
     <string name="hint_productName">Name</string>
     <string name="hint_productPrice">ej: 3€/u, 10€/kg…</string>
     <string name="button_addProduct">Add Product</string>
+    <string name="menu_addProduct">Add</string>
+    <string name="enter_name">Please enter a name</string>
 </resources>
