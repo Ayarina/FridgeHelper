@@ -1,12 +1,16 @@
 package org.wit.fridgehelper.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.material.snackbar.Snackbar
 import org.wit.fridgehelper.R
 import org.wit.fridgehelper.databinding.ActivityProductBinding
+import org.wit.fridgehelper.helpers.showImagePicker
 import org.wit.fridgehelper.main.MainApp
 import org.wit.fridgehelper.models.ProductModel
 import timber.log.Timber.i
@@ -18,6 +22,8 @@ class ProductActivity : AppCompatActivity() {
     var product = ProductModel()
     private lateinit var app: MainApp
     var edit: Boolean = false
+    private lateinit var imageIntentLauncher : ActivityResultLauncher<Intent>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +43,7 @@ class ProductActivity : AppCompatActivity() {
             binding.productPriceAdd.setText(product.price)
             binding.productQuantityAdd.setText(product.quantity.toString())
             binding.btnAdd.text = getString(R.string.button_editProduct)
+            binding.addImage.text = getString(R.string.button_updateImage)
             index = app.products.indexOf(product)
         }
 
@@ -64,6 +71,11 @@ class ProductActivity : AppCompatActivity() {
 
         }
 
+        binding.addImage.setOnClickListener {
+            showImagePicker(imageIntentLauncher)
+        }
+
+        registerImagePickerCallback()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -78,5 +90,20 @@ class ProductActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun registerImagePickerCallback() {
+        imageIntentLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult())
+            { result ->
+                when(result.resultCode){
+                    RESULT_OK -> {
+                        if (result.data != null) {
+                            i("Got Result ${result.data!!.data}")
+                        }
+                    }
+                    RESULT_CANCELED -> { } else -> { }
+                }
+            }
     }
 }

@@ -4,6 +4,7 @@
     <!-- Common text-->
     <string name="logIn">LogIn</string>
     <string name="register">Register</string>
+    <string name="select_product_image">Select product image</string>
 
     <!-- Hints -->
     <string name="hint_email">Email</string>
@@ -27,6 +28,7 @@
     <string name="button_addProduct">Add Product</string>
     <string name="button_editProduct">Edit Product</string>
     <string name="button_addImage">Add Image </string>
+    <string name="button_updateImage">Update Image </string>
 
 
 </resources>
