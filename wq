@@ -1,0 +1,71 @@
+[33mcommit 9709bdafea404bbd79198b23aecce68ed6a547a2[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Ayarina <ayat.harastani@gmail.com>
+Date:   Wed Jan 19 12:04:25 2022 +0100
+
+    Recycler View UIs added
+
+[33mcommit 487215cf8ef734fb3576d381d257db19af619d7a[m
+Author: Ayarina <ayat.harastani@gmail.com>
+Date:   Wed Jan 19 10:52:18 2022 +0100
+
+    custom toolbar added to all current activities
+
+[33mcommit 909c4c91afef860c6e1b5d6fcbd1aaac0ee2f0d4[m
+Author: Ayarina <ayat.harastani@gmail.com>
+Date:   Wed Jan 19 10:39:06 2022 +0100
+
+    resources update
+
+[33mcommit cf4b46272a4b2fdafd7fd0b6a3569e283f957a80[m
+Author: Ayarina <ayat.harastani@gmail.com>
+Date:   Wed Jan 19 10:33:39 2022 +0100
+
+    Refactor MainActivity to ProductListActivity
+
+[33mcommit 32df681c15dc2d27e4d849708df46d5b8353c8e4[m
+Author: Ayarina <ayat.harastani@gmail.com>
+Date:   Wed Jan 19 10:30:44 2022 +0100
+
+    FireBase Auth Fixes
+
+[33mcommit 5dbc0ddb9730b80d5fd7b55c459c6f30f682a1af[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Ayarina <ayat.harastani@gmail.com>
+Date:   Mon Jan 17 18:12:37 2022 +0100
+
+    LogIn and Register function
+
+[33mcommit b28c2bdd1e7898b1c42b3c3212320b4a442feb45[m
+Author: Ayarina <ayat.harastani@gmail.com>
+Date:   Mon Jan 17 16:46:55 2022 +0100
+
+    FireBase Auth Dependencies
+
+[33mcommit 411f83860495824256cf7fe1ee0cbf13444f8615[m
+Author: Ayarina <ayat.harastani@gmail.com>
+Date:   Mon Jan 17 16:42:29 2022 +0100
+
+    FireBase Dependencies added
+
+[33mcommit 470f9d07e4251f57fa5443483b47ef92b74194d4[m
+Author: Ayarina <ayat.harastani@gmail.com>
+Date:   Mon Jan 17 16:33:58 2022 +0100
+
+    Update README.md
+
+[33mcommit 0ccbd1974f8c850732377a58c3899590ee3ae273[m
+Author: Ayarina <ayat.harastani@gmail.com>
+Date:   Mon Jan 17 16:31:33 2022 +0100
+
+    gitignore update
+
+[33mcommit d4b171c7d5a3fe53dc8503b6d26b209ce4d38f1c[m
+Author: Ayarina <ayat.harastani@gmail.com>
+Date:   Mon Jan 17 16:29:11 2022 +0100
+
+    Project Creation
+
+[33mcommit 6e8125c9868de49021337b1e5fdeddd0a27220d7[m
+Author: Ayat Harastani <70058137+Ayarina@users.noreply.github.com>
+Date:   Mon Jan 17 16:25:49 2022 +0100
+
+    Initial commit
