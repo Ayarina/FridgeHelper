@@ -1,47 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.LogInActivity"
-    android:orientation="vertical"
-    android:layout_margin="10dp">
+    tools:context=".activities.LogInActivity">
 
-    <EditText
-        android:id="@+id/logIn_email"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbarlayoutLogIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/basic_margin"
-        android:hint="@string/hint_email"
-        />
+        android:background="@color/colorAccent"
+        android:fitsSystemWindows="true"
+        app:elevation="0dip"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-    <EditText
-        android:id="@+id/logIn_password"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleTextColor="@color/colorPrimary" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/basic_margin"
-        android:inputType="textPassword"
-        android:hint="@string/hint_password"
-        />
+        android:layout_height="match_parent"
+        android:layout_below="@id/appbarlayoutLogIn"
+        android:orientation="vertical"
+        android:layout_margin="10dp">
 
-    <Button
-        android:id="@+id/logIn_logInbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/logIn"
-        android:layout_margin="@dimen/basic_margin"
-        />
+        <EditText
+            android:id="@+id/logIn_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/basic_margin"
+            android:hint="@string/hint_email"
+            />
 
-    <Button
-        android:id="@+id/logIn_registerButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/register"
-        android:layout_margin="@dimen/basic_margin"
-        />
+        <EditText
+            android:id="@+id/logIn_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/basic_margin"
+            android:inputType="textPassword"
+            android:hint="@string/hint_password"
+            />
+
+        <Button
+            android:id="@+id/logIn_logInbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/logIn"
+            android:layout_margin="@dimen/basic_margin"
+            />
+
+        <Button
+            android:id="@+id/logIn_registerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/register"
+            android:layout_margin="@dimen/basic_margin"
+            />
+    </LinearLayout>
 
 
-</LinearLayout>
+</RelativeLayout>

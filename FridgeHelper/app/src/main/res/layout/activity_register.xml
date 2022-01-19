@@ -1,46 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.RegisterActivity"
-    android:orientation="vertical">
+    >
 
-    <EditText
-        android:id="@+id/register_email"
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbarlayoutRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/basic_margin"
-        android:hint="@string/hint_email"
-        />
+        android:background="@color/colorAccent"
+        android:fitsSystemWindows="true"
+        app:elevation="0dip"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-    <EditText
-        android:id="@+id/register_password"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleTextColor="@color/colorPrimary" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/basic_margin"
-        android:inputType="textPassword"
-        android:hint="@string/hint_password"
-        />
-
-    <EditText
-        android:id="@+id/register_passwordCheck"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/basic_margin"
-        android:inputType="textPassword"
-        android:hint="@string/hint_password"
-        />
-
-    <Button
-        android:id="@+id/register_registerButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/register"
-        android:layout_margin="@dimen/basic_margin"
-        />
+        android:layout_height="match_parent"
+        android:layout_below="@id/appbarlayoutRegister"
+        android:orientation="vertical"
+        android:layout_margin="10dp">
 
 
-</LinearLayout>
+        <EditText
+            android:id="@+id/register_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/basic_margin"
+            android:hint="@string/hint_email"
+            />
+
+        <EditText
+            android:id="@+id/register_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/basic_margin"
+            android:inputType="textPassword"
+            android:hint="@string/hint_password"
+            />
+
+        <EditText
+            android:id="@+id/register_passwordCheck"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/basic_margin"
+            android:inputType="textPassword"
+            android:hint="@string/hint_password"
+            />
+
+        <Button
+            android:id="@+id/register_registerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/register"
+            android:layout_margin="@dimen/basic_margin"
+            />
+    </LinearLayout>
+
+
+</RelativeLayout>

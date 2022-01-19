@@ -24,6 +24,7 @@ class LogInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLogInBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.toolbar.title = title
 
         auth = Firebase.auth
         app = application as MainApp
