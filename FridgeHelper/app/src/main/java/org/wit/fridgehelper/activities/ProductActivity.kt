@@ -17,6 +17,7 @@ class ProductActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProductBinding
     var product = ProductModel()
     private lateinit var app: MainApp
+    var edit: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,14 +28,32 @@ class ProductActivity : AppCompatActivity() {
 
         app = application as MainApp
 
+        var index: Int = 0
+
+        if (intent.hasExtra("product_edit")) {
+            edit = true
+            product = intent.extras?.getParcelable("product_edit")!!
+            binding.productNameAdd.setText(product.name)
+            binding.productPriceAdd.setText(product.price)
+            binding.productQuantityAdd.setText(product.quantity.toString())
+            binding.btnAdd.text = getString(R.string.button_editProduct)
+            index = app.products.indexOf(product)
+        }
+
         binding.productQuantityAdd.setText("0")
         binding.btnAdd.setOnClickListener() {
             product.name = binding.productNameAdd.text.toString()
             product.price = binding.productPriceAdd.text.toString()
             product.quantity = binding.productQuantityAdd.text.toString().toInt()
             if(product.name.isNotEmpty()) {
-                app.products.add(product.copy())
-                i("Added product: $product")
+                if(!edit) {
+                    app.products.add(product.copy())
+                    i("Added product: $product")
+                }
+                else {
+                    app.products[index] = product
+                    i("Edited product: $product")
+                }
                 setResult(RESULT_OK)
                 finish()
             }

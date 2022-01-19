@@ -1,19 +1,30 @@
 <resources>
     <string name="app_name">FridgeHelper</string>
+
+    <!-- Common text-->
+    <string name="logIn">LogIn</string>
+    <string name="register">Register</string>
+
+    <!-- Hints -->
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
-    <string name="logIn">LogIn</string>
-    <string name="logIn_failure">LogIn Failure</string>
-    <string name="register">Register</string>
-    <string name="passwords_do_not_match">The passwords do not match</string>
-    <string name="failedRegistration">Registration Failed</string>
-    <string name="welcome">Welcome</string>
     <string name="hint_productName">Name</string>
     <string name="hint_productPrice">ej: 3€/u, 10€/kg…</string>
-    <string name="button_addProduct">Add Product</string>
-    <string name="menu_addProduct">Add</string>
-    <string name="enter_name">Please enter a name</string>
     <string name="hint_quantity">Quantity</string>
+
+    <!-- Snackbar's messages -->
+    <string name="welcome">Welcome</string>
+    <string name="failedRegistration">Registration Failed</string>
+    <string name="passwords_do_not_match">The passwords do not match</string>
+    <string name="logIn_failure">LogIn Failure</string>
+    <string name="enter_name">Please enter a name</string>
+
+    <!-- Menu's titles-->
+    <string name="menu_addProduct">Add</string>
     <string name="menu_cancelProduct">Cancel</string>
+
+    <!-- Button's texts-->
+    <string name="button_addProduct">Add Product</string>
+    <string name="button_editProduct">Edit Product</string>
 
 </resources>

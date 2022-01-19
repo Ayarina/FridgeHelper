@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.wit.fridgehelper.R
 import org.wit.fridgehelper.adapters.ProductAdapter
@@ -17,6 +19,7 @@ class ProductListActivity : AppCompatActivity(), ProductListener {
 
     private lateinit var binding: ActivityProductListBinding
     private lateinit var app: MainApp
+    private lateinit var refreshIntentLauncher : ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +35,7 @@ class ProductListActivity : AppCompatActivity(), ProductListener {
         binding.recyclerView.layoutManager = layoutManager
         binding.recyclerView.adapter = ProductAdapter(app.products, this)
 
+        registerRefreshCallback()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -51,6 +55,13 @@ class ProductListActivity : AppCompatActivity(), ProductListener {
 
     override fun onProductClick(product: ProductModel) {
         val launcherIntent = Intent(this, ProductActivity::class.java)
-        startActivity(launcherIntent)
+        launcherIntent.putExtra("product_edit", product)
+        refreshIntentLauncher.launch(launcherIntent)
+    }
+
+    private fun registerRefreshCallback() {
+        refreshIntentLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult())
+            {binding.recyclerView.adapter?.notifyDataSetChanged() }
     }
 }
