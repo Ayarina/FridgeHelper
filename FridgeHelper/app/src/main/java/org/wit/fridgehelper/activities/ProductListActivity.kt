@@ -22,6 +22,7 @@ class ProductListActivity : AppCompatActivity(), ProductListener {
     private lateinit var binding: ActivityProductListBinding
     private lateinit var app: MainApp
     private lateinit var refreshIntentLauncher : ActivityResultLauncher<Intent>
+    private lateinit var mapIntentLauncher : ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,8 +36,10 @@ class ProductListActivity : AppCompatActivity(), ProductListener {
         //RecyclerView
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
+
         loadPlacemarks()
         registerRefreshCallback()
+        registerMapCallback()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -50,6 +53,10 @@ class ProductListActivity : AppCompatActivity(), ProductListener {
             R.id.item_add -> {
                 val launcherIntent = Intent(this, ProductActivity::class.java)
                 refreshIntentLauncher.launch(launcherIntent)
+            }
+            R.id.item_map -> {
+                val launcherIntent = Intent(this, ProductMapActivity::class.java)
+                mapIntentLauncher.launch(launcherIntent)
             }
         }
         return super.onOptionsItemSelected(item)
@@ -72,6 +79,13 @@ class ProductListActivity : AppCompatActivity(), ProductListener {
                 binding.recyclerView.adapter?.notifyDataSetChanged()
             }
     }
+
+    private fun registerMapCallback() {
+        mapIntentLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult())
+            {  }
+    }
+
 
     private fun loadPlacemarks() {
         showPlacemarks(app.products)

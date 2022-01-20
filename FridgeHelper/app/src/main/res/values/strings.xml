@@ -6,6 +6,9 @@
     <string name="register">Register</string>
     <string name="select_product_image">Select product image</string>
     <string name="title_activity_map">Map</string>
+    <string name="product_image_placeholder">Product Image</string>
+    <string name="product_name_placeholder">Product Name</string>
+    <string name="product_price_placeholder">Product Price</string>
 
     <!-- Hints -->
     <string name="hint_email">Email</string>
@@ -27,6 +30,7 @@
     <string name="menu_addProduct">Add</string>
     <string name="menu_cancelProduct">Cancel</string>
     <string name="menu_deleteProduct">Delete</string>
+    <string name="menu_map">Map</string>
 
     <!-- Button's texts-->
     <string name="button_addProduct">Add Product</string>

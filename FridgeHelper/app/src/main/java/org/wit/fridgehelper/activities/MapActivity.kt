@@ -40,8 +40,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerD
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        mMap.setOnMarkerDragListener(this)
-        mMap.setOnMarkerClickListener(this)
+
 
         val loc = LatLng(location.lat!!, location.lng!!)
         val options = MarkerOptions()
@@ -50,7 +49,11 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerD
             .draggable(true)
             .position(loc)
         mMap.addMarker(options)
+        mMap.uiSettings.isZoomControlsEnabled = true
+        mMap.uiSettings.isZoomGesturesEnabled = true
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, location.zoom!!))
+        mMap.setOnMarkerDragListener(this)
+        mMap.setOnMarkerClickListener(this)
     }
 
 
