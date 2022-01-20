@@ -42,7 +42,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerD
 
         val loc = LatLng(location.lat, location.lng)
         val options = MarkerOptions()
-            .title("Mercadona")
+            .title(location.title)
             .snippet("GPS : $loc")
             .draggable(true)
             .position(loc)

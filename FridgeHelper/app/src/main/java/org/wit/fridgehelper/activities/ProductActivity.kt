@@ -30,7 +30,7 @@ class ProductActivity : AppCompatActivity() {
     var product = ProductModel()
     var edit: Boolean = false
     var delete: Boolean = false
-    var location = Location(52.245696, -7.139102, 15f)
+    var location = Location("Mercadona", 52.245696, -7.139102, 15f)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
