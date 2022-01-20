@@ -1,4 +1,6 @@
-package org.wit.fridgehelper.models
+package org.wit.fridgehelper.models.interfaces
+
+import org.wit.fridgehelper.models.ProductModel
 
 interface ProductStore {
     fun addProduct(userId: String, product: ProductModel)

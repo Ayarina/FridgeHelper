@@ -7,14 +7,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import org.wit.fridgehelper.databinding.CardProductBinding
 import org.wit.fridgehelper.models.ProductModel
+import org.wit.fridgehelper.models.interfaces.ProductListener
 
-interface ProductListener {
-    fun onProductClick(product: ProductModel)
-    fun valueUpdated(productChanged: ProductModel)
-}
 
 class ProductAdapter constructor(private var products: List<ProductModel>,
-                                 private val listener: ProductListener) :
+                                 private val listener: ProductListener
+) :
     RecyclerView.Adapter<ProductAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {

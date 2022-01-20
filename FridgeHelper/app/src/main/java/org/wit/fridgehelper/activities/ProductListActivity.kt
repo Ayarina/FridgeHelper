@@ -11,7 +11,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.wit.fridgehelper.R
 import org.wit.fridgehelper.adapters.ProductAdapter
-import org.wit.fridgehelper.adapters.ProductListener
+import org.wit.fridgehelper.models.interfaces.ProductListener
 import org.wit.fridgehelper.databinding.ActivityProductListBinding
 import org.wit.fridgehelper.main.MainApp
 import org.wit.fridgehelper.models.Location

@@ -5,8 +5,9 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
-import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import org.wit.fridgehelper.models.interfaces.ProductStore
+import org.wit.fridgehelper.models.interfaces.UserStore
 import timber.log.Timber.i
 import java.util.*
 
