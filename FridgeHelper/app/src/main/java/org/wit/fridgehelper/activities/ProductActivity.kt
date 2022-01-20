@@ -93,6 +93,12 @@ class ProductActivity : AppCompatActivity() {
         }
 
         binding.addBestLocation.setOnClickListener {
+            if(product.location?.zoom != 0.0f){
+                location.lat = product.location?.lat
+                location.lng = product.location?.lng
+                location.zoom = product.location?.zoom
+            }
+
             val launcherIntent = Intent(this, MapActivity::class.java)
                 .putExtra("location", location)
             mapIntentLauncher.launch(launcherIntent)
