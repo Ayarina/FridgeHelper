@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Location(var title: String = "",
-                    var lat: Double = 0.0,
-                    var lng: Double = 0.0,
-                    var zoom: Float = 0f) : Parcelable
+data class Location(var title: String? = null,
+                    var lat: Double? = null,
+                    var lng: Double? = null,
+                    var zoom: Float? = null) : Parcelable

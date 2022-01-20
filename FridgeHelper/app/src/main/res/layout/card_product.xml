@@ -43,11 +43,11 @@
 
             <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
                 android:id="@+id/productQuantityPicker"
-                android:layout_width="120dp"
+                android:layout_width="125dp"
                 android:layout_height="wrap_content"
                 app:backGroundColor="@color/colorAccent"
                 app:initialNumber="0"
-                app:finalNumber="10"
+                app:finalNumber="100"
                 app:textSize="8sp"
                 android:layout_alignParentEnd="true"
                 />

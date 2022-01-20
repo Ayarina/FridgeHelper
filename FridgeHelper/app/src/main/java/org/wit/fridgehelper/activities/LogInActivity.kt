@@ -26,8 +26,9 @@ class LogInActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.toolbar.title = title
 
-        auth = Firebase.auth
         app = application as MainApp
+        auth = app.auth
+
 
         binding.logInLogInbutton.setOnClickListener {
             var email = binding.logInEmail.text.toString()
@@ -35,11 +36,8 @@ class LogInActivity : AppCompatActivity() {
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
+                        app.database.getProductsOfUser(app.auth.currentUser!!.uid, app.products)
                         i("signInWithEmail:success")
-                        val user = auth.currentUser
-                        app.user = User("SampleUsername", "email")
-
-                        //TODO Hay que pasar información o obtener?
                         val launcherIntent = Intent(this, ProductListActivity::class.java)
                         Snackbar.make(it,getString(R.string.welcome), Snackbar.LENGTH_LONG).show()
                         startActivity(launcherIntent)

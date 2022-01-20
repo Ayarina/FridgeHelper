@@ -11,7 +11,6 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import org.wit.fridgehelper.databinding.ActivityRegisterBinding
 import org.wit.fridgehelper.main.MainApp
-import org.wit.fridgehelper.models.User
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -24,10 +23,11 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        auth = Firebase.auth
         app = application as MainApp
+        auth = app.auth
 
         binding.registerRegisterButton.setOnClickListener {
+            var username = binding.registerUsername.text.toString()
             var email = binding.registerEmail.text.toString()
             var password = binding.registerPassword.text.toString()
             var passwordCheck = binding.registerPasswordCheck.text.toString()
@@ -36,14 +36,18 @@ class RegisterActivity : AppCompatActivity() {
                 auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
-                            i("createUserWithEmail:success")
                             val user = auth.currentUser
-                            app.user = User("SampleUsername", "email")
+                            if (user != null) {
+                                app.database.writeNewUser(user.uid, username, email)
+                                app.database.getProductsOfUser(app.auth.currentUser!!.uid, app.products)
 
-                            //TODO Hay que pasar información o obtener?
+                            }
+                            i("createUserWithEmail:success")
+                            var welcomeMessage = "${getString(R.string.welcome)} $username"
                             val launcherIntent = Intent(this, ProductListActivity::class.java)
-                            Snackbar.make(it,getString(R.string.welcome), Snackbar.LENGTH_LONG).show()
+                            Snackbar.make(it,welcomeMessage, Snackbar.LENGTH_LONG).show()
                             startActivity(launcherIntent)
+
                         } else {
                             i("createUserWithEmail:failure")
                             Snackbar.make(it,getString(R.string.failedRegistration), Snackbar.LENGTH_LONG)

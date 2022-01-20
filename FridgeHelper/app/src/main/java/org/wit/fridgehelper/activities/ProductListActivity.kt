@@ -1,6 +1,7 @@
 package org.wit.fridgehelper.activities
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -13,6 +14,7 @@ import org.wit.fridgehelper.adapters.ProductAdapter
 import org.wit.fridgehelper.adapters.ProductListener
 import org.wit.fridgehelper.databinding.ActivityProductListBinding
 import org.wit.fridgehelper.main.MainApp
+import org.wit.fridgehelper.models.Location
 import org.wit.fridgehelper.models.ProductModel
 
 class ProductListActivity : AppCompatActivity(), ProductListener {
@@ -35,6 +37,7 @@ class ProductListActivity : AppCompatActivity(), ProductListener {
         binding.recyclerView.layoutManager = layoutManager
         binding.recyclerView.adapter = ProductAdapter(app.products, this)
 
+        binding.recyclerView.adapter?.notifyDataSetChanged()
         registerRefreshCallback()
     }
 
@@ -42,6 +45,7 @@ class ProductListActivity : AppCompatActivity(), ProductListener {
         menuInflater.inflate(R.menu.menu_main, menu)
         return super.onCreateOptionsMenu(menu)
     }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
@@ -59,9 +63,17 @@ class ProductListActivity : AppCompatActivity(), ProductListener {
         refreshIntentLauncher.launch(launcherIntent)
     }
 
+    override fun valueUpdated(productChanged: ProductModel) {
+        app.database.updateProduct(app.auth.currentUser!!.uid, productChanged)
+    }
+
     private fun registerRefreshCallback() {
         refreshIntentLauncher =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult())
-            {binding.recyclerView.adapter?.notifyDataSetChanged() }
+            {
+                binding.recyclerView.adapter?.notifyDataSetChanged()
+            }
     }
+
+
 }

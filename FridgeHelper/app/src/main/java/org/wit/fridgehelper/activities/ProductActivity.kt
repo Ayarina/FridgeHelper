@@ -27,7 +27,7 @@ class ProductActivity : AppCompatActivity() {
     private lateinit var mapIntentLauncher : ActivityResultLauncher<Intent>
     private lateinit var app: MainApp
 
-    var product = ProductModel()
+    var product = ProductModel(0, "", "", 0, "", Location("",0.0, 0.0, 0.0f))
     var edit: Boolean = false
     var delete: Boolean = false
     var location = Location("Mercadona", 52.245696, -7.139102, 15f)
@@ -44,33 +44,38 @@ class ProductActivity : AppCompatActivity() {
         var index: Int = 0
 
         if (intent.hasExtra("product_edit")) {
+            index = app.products.indexOf(product)
             edit = true
             product = intent.extras?.getParcelable("product_edit")!!
             binding.productNameAdd.setText(product.name)
             binding.productPriceAdd.setText(product.price)
             binding.productQuantityAdd.setText(product.quantity.toString())
             binding.btnAdd.text = getString(R.string.button_editProduct)
-            if(product.image != Uri.EMPTY) {
+            if(product.image == null)
+                product.image = Uri.EMPTY.toString()
+            if(product.image != Uri.EMPTY.toString()) {
                 binding.addImage.text = getString(R.string.button_updateImage)
                 Picasso.get()
-                    .load(product.image)
+                    .load(Uri.parse(product.image))
                     .into(binding.productImageAdd)
             }
-            index = app.products.indexOf(product)
         }
 
-        binding.productQuantityAdd.setText("0")
         binding.btnAdd.setOnClickListener() {
             product.name = binding.productNameAdd.text.toString()
             product.price = binding.productPriceAdd.text.toString()
             product.quantity = binding.productQuantityAdd.text.toString().toInt()
-            if(product.name.isNotEmpty()) {
+            if(product.image == null)
+                product.image = Uri.EMPTY.toString()
+            if(product.name == null)
+                product.name = ""
+            if(product.name!!.isNotEmpty()) {
                 if(!edit) {
-                    app.products.add(product.copy())
+                    app.database.addProduct(app.auth.currentUser!!.uid, product.copy())
                     i("Added product: $product")
                 }
                 else {
-                    app.products[index] = product
+                    app.database.updateProduct(app.auth.currentUser!!.uid, product.copy())
                     i("Edited product: $product")
                 }
                 setResult(RESULT_OK)
@@ -114,7 +119,9 @@ class ProductActivity : AppCompatActivity() {
                         .show()
                 }
                 else{
+                    app.database.deleteProduct(app.auth.currentUser!!.uid, product.copy())
                     app.products.remove(product)
+                    setResult(RESULT_OK)
                     finish()
                 }
             }
@@ -130,9 +137,9 @@ class ProductActivity : AppCompatActivity() {
                     RESULT_OK -> {
                         if (result.data != null) {
                             i("Got Result ${result.data!!.data}")
-                            product.image = result.data!!.data!!
+                            product.image = result.data!!.data!!.toString()
                             Picasso.get()
-                                .load(product.image)
+                                .load(Uri.parse(product.image))
                                 .into(binding.productImageAdd)
                             binding.addImage.text = getString(R.string.button_updateImage)
                         }

@@ -31,6 +31,13 @@
         android:orientation="vertical"
         android:layout_margin="10dp">
 
+        <EditText
+            android:id="@+id/register_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/basic_margin"
+            android:hint="@string/hint_username"
+            />
 
         <EditText
             android:id="@+id/register_email"

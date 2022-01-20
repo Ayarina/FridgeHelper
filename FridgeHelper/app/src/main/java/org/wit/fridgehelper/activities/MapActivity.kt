@@ -20,7 +20,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerD
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapBinding
-    var location = Location()
+    var location = Location("", 0.0,0.0, 0.0f)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +29,9 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerD
         setContentView(binding.root)
 
         location = intent.extras?.getParcelable<Location>("location")!!
+
+        if(location.lat == null && location.lng == null && location.zoom == null)
+            location = Location("", 0.0,0.0, 0.0f)
 
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
@@ -40,14 +43,14 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerD
         mMap.setOnMarkerDragListener(this)
         mMap.setOnMarkerClickListener(this)
 
-        val loc = LatLng(location.lat, location.lng)
+        val loc = LatLng(location.lat!!, location.lng!!)
         val options = MarkerOptions()
             .title(location.title)
             .snippet("GPS : $loc")
             .draggable(true)
             .position(loc)
         mMap.addMarker(options)
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, location.zoom))
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, location.zoom!!))
     }
 
 
@@ -65,7 +68,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerD
         super.onBackPressed()
     }
     override fun onMarkerClick(marker: Marker): Boolean {
-        val loc = LatLng(location.lat, location.lng)
+        val loc = LatLng(location.lat!!, location.lng!!)
         marker.snippet = "GPS : $loc"
         return false
     }

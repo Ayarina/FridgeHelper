@@ -1,5 +1,6 @@
 package org.wit.fridgehelper.adapters
 
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -9,6 +10,7 @@ import org.wit.fridgehelper.models.ProductModel
 
 interface ProductListener {
     fun onProductClick(product: ProductModel)
+    fun valueUpdated(productChanged: ProductModel)
 }
 
 class ProductAdapter constructor(private var products: List<ProductModel>,
@@ -35,9 +37,13 @@ class ProductAdapter constructor(private var products: List<ProductModel>,
         fun bind(product: ProductModel, listener: ProductListener) {
             binding.productName.text = product.name
             binding.productPrice.text = product.price
-            binding.productQuantityPicker.number = product.quantity.toString()
-            Picasso.get().load(product.image).resize(200,200).into(binding.productImage)
+            binding.productQuantityPicker.number = "${product.quantity}"
+            Picasso.get().load(Uri.parse(product.image)).resize(210,200).into(binding.productImage)
             binding.root.setOnClickListener { listener.onProductClick(product) }
+            binding.productQuantityPicker.setOnValueChangeListener { view, oldValue, newValue ->
+                product.quantity = binding.productQuantityPicker.number.toInt()
+                listener.valueUpdated(product) }
+            
         }
     }
 }
