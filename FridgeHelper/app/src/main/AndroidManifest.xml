@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="org.wit.fridgehelper">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application xmlns:tools="http://schemas.android.com/tools"
         android:name=".main.MainApp"
         android:allowBackup="true"
@@ -12,6 +15,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FridgeHelper"
         tools:replace="android:theme">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".activities.MapActivity"
+            android:exported="false"
+            android:label="@string/title_activity_map" />
         <activity
             android:name=".activities.ProductActivity"
             android:exported="false" />
