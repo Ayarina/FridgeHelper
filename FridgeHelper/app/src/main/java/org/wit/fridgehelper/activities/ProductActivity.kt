@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.material.snackbar.Snackbar
@@ -21,11 +22,12 @@ import timber.log.Timber.i
 class ProductActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityProductBinding
-    var product = ProductModel()
-    private lateinit var app: MainApp
-    var edit: Boolean = false
     private lateinit var imageIntentLauncher : ActivityResultLauncher<Intent>
+    private lateinit var app: MainApp
 
+    var product = ProductModel()
+    var edit: Boolean = false
+    var delete: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -94,6 +96,17 @@ class ProductActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.item_cancel -> {
                 finish()
+            }
+            R.id.item_delete -> {
+                if(!delete){
+                    delete = true
+                    Snackbar.make(binding.root,getString(R.string.confirm_delete), Snackbar.LENGTH_LONG)
+                        .show()
+                }
+                else{
+                    app.products.remove(product)
+                    finish()
+                }
             }
         }
         return super.onOptionsItemSelected(item)

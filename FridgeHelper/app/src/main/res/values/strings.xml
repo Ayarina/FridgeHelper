@@ -19,10 +19,12 @@
     <string name="passwords_do_not_match">The passwords do not match</string>
     <string name="logIn_failure">LogIn Failure</string>
     <string name="enter_name">Please enter a name</string>
+    <string name="confirm_delete">Please press Delete again to confirm and delete the product</string>
 
     <!-- Menu's titles-->
     <string name="menu_addProduct">Add</string>
     <string name="menu_cancelProduct">Cancel</string>
+    <string name="menu_deleteProduct">Delete</string>
 
     <!-- Button's texts-->
     <string name="button_addProduct">Add Product</string>
