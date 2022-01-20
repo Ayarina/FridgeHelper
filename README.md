@@ -16,5 +16,7 @@ This app serves as a helper, as its name says, to easily check all the products 
 - FireBase Database and Authentication
 - Google Maps
 
+Both of the API keys are not commited
+
 ## Bugs
 - There is a small bug when you edit something in the database, it doesn't change instantly on the recyclerView, as the `onDataChange Listener` is encapsulated and I didn't manage to put a `notifyDataSetChanged()` when `onDataChange` executes
