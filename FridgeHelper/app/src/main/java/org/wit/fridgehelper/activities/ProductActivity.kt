@@ -15,6 +15,7 @@ import org.wit.fridgehelper.R
 import org.wit.fridgehelper.databinding.ActivityProductBinding
 import org.wit.fridgehelper.helpers.showImagePicker
 import org.wit.fridgehelper.main.MainApp
+import org.wit.fridgehelper.models.Location
 import org.wit.fridgehelper.models.ProductModel
 import timber.log.Timber.i
 
@@ -29,6 +30,7 @@ class ProductActivity : AppCompatActivity() {
     var product = ProductModel()
     var edit: Boolean = false
     var delete: Boolean = false
+    var location = Location(52.245696, -7.139102, 15f)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -87,6 +89,7 @@ class ProductActivity : AppCompatActivity() {
 
         binding.addBestLocation.setOnClickListener {
             val launcherIntent = Intent(this, MapActivity::class.java)
+                .putExtra("location", location)
             mapIntentLauncher.launch(launcherIntent)
         }
 
@@ -142,6 +145,17 @@ class ProductActivity : AppCompatActivity() {
     private fun registerMapCallback() {
         mapIntentLauncher =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult())
-            { i("Map Loaded") }
-    }
-}
+            { result ->
+                when (result.resultCode) {
+                    RESULT_OK -> {
+                        if (result.data != null) {
+                            i("Got Location ${result.data.toString()}")
+                            location = result.data!!.extras?.getParcelable("location")!!
+                            i("Location == $location")
+                            product.location = location
+                        }
+                    }
+                    RESULT_CANCELED -> { } else -> { }
+                }
+            }
+}       }

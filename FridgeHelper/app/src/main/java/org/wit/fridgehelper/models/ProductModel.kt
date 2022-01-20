@@ -8,4 +8,5 @@ import kotlinx.parcelize.Parcelize
 data class ProductModel(var name: String = "",
                         var price: String = "",
                         var quantity: Int = 0,
-                        var image: Uri = Uri.EMPTY): Parcelable
+                        var image: Uri = Uri.EMPTY,
+                        var location: Location = Location()): Parcelable
