@@ -35,9 +35,7 @@ class ProductListActivity : AppCompatActivity(), ProductListener {
         //RecyclerView
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = ProductAdapter(app.products, this)
-
-        binding.recyclerView.adapter?.notifyDataSetChanged()
+        loadPlacemarks()
         registerRefreshCallback()
     }
 
@@ -75,5 +73,13 @@ class ProductListActivity : AppCompatActivity(), ProductListener {
             }
     }
 
+    private fun loadPlacemarks() {
+        showPlacemarks(app.products)
+    }
+
+    fun showPlacemarks (placemarks: List<ProductModel>) {
+        binding.recyclerView.adapter = ProductAdapter(placemarks, this)
+        binding.recyclerView.adapter?.notifyDataSetChanged()
+    }
 
 }
