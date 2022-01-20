@@ -8,7 +8,7 @@ This app serves as a helper, as its name says, to easily check all the products 
 - The quantity of the products can be updated with the ElegantButton Feature, which is a number stepper
 - You can also add an Image, it is optional though, as well as the location
 - Every product has its best location to buy it from, and all the products' locations can be viewed on a map
-- Everything you edit, even the quantity with the number stepper, it is instantly updated on the database
+- Everything you edit, even the quantity with the number stepper, is instantly updated on the database
 
 ## Features used
 - ElegantButton from https://github.com/ashik94vc/ElegantNumberButton
